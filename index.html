@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>兒童注意力與行為功能分類問卷（DSM-5 版）</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F7F6F2;--card:#FFFFFF;--border:#E4E2DB;--border2:#D0CEC5;
+  --text:#1A1916;--text2:#6B6860;--text3:#9B9890;
+  --blue:#1A6BBF;--blue-bg:#EBF3FB;--blue-b:#C2D9F0;
+  --green:#157A52;--green-bg:#E4F5ED;--green-b:#B3E0CC;
+  --red:#B03020;--red-bg:#FBECEA;--red-b:#F0C4BE;
+  --orange:#954D00;--orange-bg:#FEF0E0;--orange-b:#F5CEAC;
+  --purple:#5040AA;--purple-bg:#EEF0FB;--purple-b:#C8CAEF;
+  --warn:#865200;--warn-bg:#FEF5E6;--warn-b:#F5D89A;
+  --danger:#A01818;--danger-bg:#FDEAEA;--danger-b:#F0BCBC;
+  --radius:12px;--radius-sm:8px;
+}
+body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:0}
+.hero{background:linear-gradient(135deg,#1A3A5C 0%,#2A5F9E 60%,#3A7EC0 100%);color:#fff;padding:2.5rem 1.5rem 2rem;text-align:center}
+.hero-badge{display:inline-block;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);border-radius:20px;padding:4px 14px;font-size:11px;letter-spacing:.08em;margin-bottom:1rem}
+.hero h1{font-size:clamp(18px,4vw,26px);font-weight:700;line-height:1.4;margin-bottom:.5rem}
+.hero p{font-size:13px;opacity:.8;line-height:1.6;max-width:480px;margin:0 auto}
+.pg-wrap{background:#fff;padding:.75rem 1.5rem;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+.pg-top{display:flex;justify-content:space-between;font-size:12px;color:var(--text2);margin-bottom:.4rem}
+.pg-bar{height:5px;background:var(--border);border-radius:3px;overflow:hidden}
+.pg-fill{height:100%;background:linear-gradient(90deg,#1A6BBF,#3A9FD0);border-radius:3px;transition:width .3s}
+.container{max-width:620px;margin:0 auto;padding:1.25rem 1rem 3rem}
+.sec{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.25rem;margin-bottom:1rem}
+.sh{display:flex;align-items:flex-start;gap:10px;margin-bottom:.85rem;padding-bottom:.75rem;border-bottom:1px solid var(--border)}
+.sb{width:30px;height:30px;border-radius:50%;font-size:12px;font-weight:700;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center}
+.st{font-size:15px;font-weight:700;color:var(--text)}
+.ss{font-size:11.5px;color:var(--text2);margin-top:3px;line-height:1.55}
+.ntag{display:inline-block;font-size:10px;padding:1px 7px;border-radius:10px;margin-left:6px;vertical-align:middle;background:var(--green-bg);color:var(--green)}
+.alert{background:var(--warn-bg);border:1px solid var(--warn-b);border-radius:var(--radius-sm);padding:.65rem 1rem;margin-bottom:.75rem;font-size:12px;color:var(--warn);line-height:1.6}
+.ref{font-size:11px;color:var(--text3);background:var(--bg);padding:5px 10px;border-radius:6px;margin-bottom:.75rem;display:inline-block;border:1px solid var(--border)}
+.qr{margin-bottom:.85rem}
+.ql{font-size:13px;color:var(--text);margin-bottom:.4rem;line-height:1.55;font-weight:500}
+.rr{display:flex;gap:5px;flex-wrap:wrap}
+.rb{border:1px solid var(--border2);background:var(--bg);border-radius:var(--radius-sm);padding:6px 11px;font-size:12px;cursor:pointer;color:var(--text2);transition:all .12s;font-family:inherit}
+.rb:hover{background:var(--blue-bg);border-color:var(--blue-b);color:var(--blue)}
+.rb.sel{background:var(--blue-bg);border-color:var(--blue);color:var(--blue);font-weight:500}
+.rb-yn{padding:6px 20px}
+.div{height:1px;background:var(--border);margin:.75rem 0}
+.sl{font-size:11px;font-weight:700;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;margin:.75rem 0 .4rem}
+.ar{display:flex;gap:10px;margin-top:1.5rem}
+.bm{flex:1;padding:11px;border-radius:var(--radius-sm);border:1px solid var(--border2);background:var(--bg);font-size:14px;cursor:pointer;color:var(--text2);font-family:inherit}
+.bm:hover{background:var(--blue-bg);border-color:var(--blue-b);color:var(--blue)}
+.bs{flex:2;padding:11px;border-radius:var(--radius-sm);border:1px solid var(--blue);background:var(--blue);font-size:14px;cursor:pointer;color:#fff;font-weight:700;font-family:inherit}
+.bs:hover{background:#155faa}
+.res{display:none;padding:1.5rem 0}
+.rh{font-size:18px;font-weight:700;margin-bottom:1.25rem;color:var(--text)}
+.dsm{border:1px solid var(--border);border-radius:var(--radius);padding:1.1rem 1.25rem;margin-bottom:.75rem;background:var(--card)}
+.dsmr{display:flex;justify-content:space-between;align-items:flex-start;font-size:12px;padding:6px 0;border-bottom:1px solid var(--border);gap:8px}
+.dsmr:last-child{border-bottom:none}
+.dl{color:var(--text2);flex-shrink:0}
+.dv{font-weight:700;color:var(--text);text-align:right}
+.nb{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.75rem 1rem;margin-top:.65rem;font-size:12px;color:var(--text2);line-height:1.7}
+.rc{border:1px solid var(--border);border-radius:var(--radius);padding:1.1rem 1.25rem;margin-bottom:.75rem;background:var(--card)}
+.rc.hl{border-width:2px;border-color:var(--blue)}
+.rt{display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem}
+.rn{font-size:14px;font-weight:700;color:var(--text)}
+.rpi{font-size:12px;padding:4px 12px;border-radius:20px;font-weight:700}
+.bb{height:7px;background:var(--bg);border-radius:4px;margin-bottom:.35rem;overflow:hidden;border:1px solid var(--border)}
+.bf{height:100%;border-radius:4px;transition:width .7s}
+.rd{font-size:12px;color:var(--text2);line-height:1.65;margin-top:.4rem}
+.lim{font-size:11px;color:var(--text3);margin-top:.35rem;padding-top:.35rem;border-top:1px solid var(--border);line-height:1.55}
+.tga{background:var(--blue-bg);color:var(--blue);padding:2px 9px;border-radius:10px;font-size:11px;margin-right:3px;font-weight:500}
+.tgb{background:var(--bg);color:var(--text3);padding:2px 9px;border-radius:10px;font-size:11px;margin-right:3px;border:1px solid var(--border)}
+.tgw{background:var(--warn-bg);color:var(--warn);padding:2px 9px;border-radius:10px;font-size:11px;margin-right:3px;font-weight:500}
+.caveat{border:1px solid var(--warn-b);border-radius:var(--radius-sm);padding:.6rem .9rem;margin-top:.5rem;font-size:12px;color:var(--warn);line-height:1.6;background:var(--warn-bg)}
+.diff{border:1px solid var(--danger-b);border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:.75rem;background:var(--danger-bg)}
+.difft{font-size:13px;font-weight:700;color:var(--danger);margin-bottom:.4rem}
+.diffb{font-size:12px;color:var(--danger);line-height:1.6}
+.disc{font-size:11px;color:var(--text3);line-height:1.65;padding:.65rem 1rem;border-left:3px solid var(--border2);margin-top:.85rem;background:var(--bg);border-radius:0 var(--radius-sm) var(--radius-sm) 0}
+.footer{background:#1A3A5C;color:rgba(255,255,255,0.6);text-align:center;padding:1.25rem;font-size:11px;line-height:1.7}
+@media(max-width:480px){.container{padding:1rem .75rem 3rem}.sec{padding:1rem}.hero{padding:2rem 1rem 1.5rem}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-badge">DSM-5 ｜ SNAP-IV ｜ CSHQ ｜ CBCL</div>
+  <h1>兒童注意力與行為功能分類問卷</h1>
+  <p>整合 DSM-5 診斷準則與多項臨床量表，供教育與臨床輔助篩選使用。本工具不可取代精神科或心理師之正式評估。</p>
+</div>
+
+<div class="pg-wrap">
+  <div class="pg-top"><span>填答進度</span><span id="pg-pct">0%</span></div>
+  <div class="pg-bar"><div class="pg-fill" id="prog" style="width:0%"></div></div>
+</div>
+
+<div class="container">
+<div id="fw">
+
+<div class="sec">
+  <div class="sh"><div class="sb" style="background:var(--blue-bg);color:var(--blue)">A</div><div><div class="st">基本資料與 DSM-5 前置條件</div><div class="ss">本區包含發病年齡與功能損害確認，是 DSM-5 不可缺少的兩項診斷準則</div></div></div>
+  <div class="qr"><div class="ql">孩子的年齡</div><div class="rr" id="r_age">
+    <button class="rb" data-g="age" data-v="u7">3–5 歲</button>
+    <button class="rb" data-g="age" data-v="u7">6–8 歲</button>
+    <button class="rb" data-g="age" data-v="u17">9–11 歲</button>
+    <button class="rb" data-g="age" data-v="u17">12–16 歲</button>
+    <button class="rb" data-g="age" data-v="17p">17 歲以上</button>
+  </div></div>
+  <div class="qr"><div class="ql">填問卷者身份</div><div class="rr" id="r_rep">
+    <button class="rb" data-g="rep" data-v="parent">家長</button>
+    <button class="rb" data-g="rep" data-v="teacher">教師</button>
+    <button class="rb" data-g="rep" data-v="both">家長＋老師聯合</button>
+    <button class="rb" data-g="rep" data-v="therapist">治療師／諮詢師</button>
+  </div></div>
+  <div class="qr"><div class="ql">觀察時間是否達 6 個月以上</div><div class="rr" id="r_dur">
+    <button class="rb rb-yn" data-g="dur" data-v="0">未達 6 個月</button>
+    <button class="rb rb-yn" data-g="dur" data-v="1">已達 6 個月以上</button>
+  </div></div>
+  <div class="qr"><div class="ql">症狀在學校與家中都有出現？（DSM-5 要求 2 個以上場域）</div><div class="rr" id="r_cross">
+    <button class="rb" data-g="cross" data-v="1">是，兩邊都有</button>
+    <button class="rb" data-g="cross" data-v="0">只在家中</button>
+    <button class="rb" data-g="cross" data-v="0">只在學校</button>
+    <button class="rb" data-g="cross" data-v="-1">不確定</button>
+  </div></div>
+  <div class="qr"><div class="ql">這些行為大約是幾歲開始明顯出現？<span class="ntag">DSM-5 發病準則</span></div><div class="rr" id="r_onset">
+    <button class="rb" data-g="onset" data-v="early">7 歲以前就有</button>
+    <button class="rb" data-g="onset" data-v="mid">7–11 歲之間</button>
+    <button class="rb" data-g="onset" data-v="late">12 歲或以後</button>
+    <button class="rb" data-g="onset" data-v="unknown">不確定</button>
+  </div></div>
+  <div class="qr"><div class="ql">這些症狀是否明顯影響孩子的學業、社交或日常生活？<span class="ntag">DSM-5 損害準則</span></div><div class="rr" id="r_imp">
+    <button class="rb" data-g="imp" data-v="yes">是，有明顯影響</button>
+    <button class="rb" data-g="imp" data-v="partial">部分影響，尚可應對</button>
+    <button class="rb" data-g="imp" data-v="no">目前功能正常</button>
+    <button class="rb" data-g="imp" data-v="unknown">不確定</button>
+  </div></div>
+</div>
+
+<div class="sec">
+  <div class="sh"><div class="sb" style="background:var(--red-bg);color:var(--red)">B</div><div><div class="st">鑑別診斷篩查</div><div class="ss">辨別症狀是否可能來自焦慮症、自閉症譜系或學習障礙；評分：0＝從不 1＝偶爾 2＝經常 3＝幾乎總是</div></div></div>
+  <div class="alert">⚠ 此區得分偏高時，結果頁面會在 ADHD 分析旁自動加上「鑑別但書」</div>
+  <div class="sl">焦慮症指標</div>
+  <div class="qr"><div class="ql">B1. 對分離（上學、家人離開）有過度恐懼或哭鬧</div><div class="rr" id="r_ax1"></div></div>
+  <div class="qr"><div class="ql">B2. 反覆抱怨肚子痛或頭痛，但檢查無異常</div><div class="rr" id="r_ax2"></div></div>
+  <div class="qr"><div class="ql">B3. 對失敗或犯錯有過度擔憂（考前極度焦慮、完美主義）</div><div class="rr" id="r_ax3"></div></div>
+  <div class="div"></div>
+  <div class="sl">自閉症譜系（ASD）指標</div>
+  <div class="qr"><div class="ql">B4. 強烈堅持特定慣例，改變即崩潰</div><div class="rr" id="r_asd1"></div></div>
+  <div class="qr"><div class="ql">B5. 對特定聲音、觸感或光線有明顯迴避或痛苦反應</div><div class="rr" id="r_asd2"></div></div>
+  <div class="qr"><div class="ql">B6. 社交困難：難以輪流、理解他人情緒或玩笑</div><div class="rr" id="r_asd3"></div></div>
+  <div class="div"></div>
+  <div class="sl">學習障礙指標</div>
+  <div class="qr"><div class="ql">B7. 閱讀時常跳行、顛倒字、理解明顯落後同齡</div><div class="rr" id="r_ld1"></div></div>
+  <div class="qr"><div class="ql">B8. 書寫品質極差（字體混亂、抄寫困難），但口語正常</div><div class="rr" id="r_ld2"></div></div>
+  <div class="qr"><div class="ql">B9. 數學困難，與其他科目落差明顯且非不專心導致</div><div class="rr" id="r_ld3"></div></div>
+</div>
+
+<div class="sec">
+  <div class="sh"><div class="sb" style="background:var(--green-bg);color:var(--green)">1</div><div><div class="st">注意力功能（DSM-5 不專注向度，9 項）</div><div class="ss">來源：SNAP-IV 不專注分量表，與 DSM-5 九項準則一一對應</div></div></div>
+  <div class="ref">0＝從不　1＝偶爾　2＝經常　3＝幾乎總是</div>
+  <div class="qr"><div class="ql">1. 做作業時難以持續專注，易中途分心</div><div class="rr" id="r_a1"></div></div>
+  <div class="qr"><div class="ql">2. 粗心漏看題目、計算錯誤（非不會，而是不仔細）</div><div class="rr" id="r_a2"></div></div>
+  <div class="qr"><div class="ql">3. 與之說話時眼神不聚焦，似乎沒在聽</div><div class="rr" id="r_a3"></div></div>
+  <div class="qr"><div class="ql">4. 兩步以上的指令，記不住或只執行一半</div><div class="rr" id="r_a4"></div></div>
+  <div class="qr"><div class="ql">5. 東西常找不到、書包或房間無法自行整理</div><div class="rr" id="r_a5"></div></div>
+  <div class="qr"><div class="ql">6. 持續回避或拖延需腦力維持的任務（作業、閱讀）</div><div class="rr" id="r_a6"></div></div>
+  <div class="qr"><div class="ql">7. 容易受外界聲音或視覺刺激分心而中斷任務</div><div class="rr" id="r_a7"></div></div>
+  <div class="qr"><div class="ql">8. 日常活動（帶水壺、交聯絡簿）頻繁遺忘</div><div class="rr" id="r_a8"></div></div>
+  <div class="qr"><div class="ql">9. 獨立完成任務時，需反覆提醒才能繼續</div><div class="rr" id="r_a9"></div></div>
+</div>
+
+<div class="sec">
+  <div class="sh"><div class="sb" style="background:var(--red-bg);color:var(--red)">2</div><div><div class="st">過動／衝動功能（DSM-5 過動衝動向度，9 項）</div><div class="ss">來源：SNAP-IV 過動衝動分量表，已補齊 DSM-5 全部 9 項準則</div></div></div>
+  <div class="ref">0＝從不　1＝偶爾　2＝經常　3＝幾乎總是</div>
+  <div class="qr"><div class="ql">10. 坐著時手腳不停動、在椅子上扭來扭去</div><div class="rr" id="r_h1"></div></div>
+  <div class="qr"><div class="ql">11. 在應保持座位的場合頻繁離座</div><div class="rr" id="r_h2"></div></div>
+  <div class="qr"><div class="ql">12. 在不適合的場合跑跳攀爬（青少年可能表現為坐立難安）</div><div class="rr" id="r_h3"></div></div>
+  <div class="qr"><div class="ql">13. 無法安靜地進行休閒活動或遊戲</div><div class="rr" id="r_h4"></div></div>
+  <div class="qr"><div class="ql">14. 像被馬達驅動般不停活動，難以靜止超過幾分鐘</div><div class="rr" id="r_h5"></div></div>
+  <div class="qr"><div class="ql">15. 話非常多，喋喋不休停不下來</div><div class="rr" id="r_h6"></div></div>
+  <div class="qr"><div class="ql">16. 問題未說完就搶先回答</div><div class="rr" id="r_h7"></div></div>
+  <div class="qr"><div class="ql">17. 難以等待輪到自己（排隊、輪流遊戲）</div><div class="rr" id="r_h8"></div></div>
+  <div class="qr"><div class="ql">18. 打斷或侵入他人的談話或活動</div><div class="rr" id="r_h9"></div></div>
+</div>
+
+<div class="sec">
+  <div class="sh"><div class="sb" style="background:#FBEAF0;color:#8A2A50">3</div><div><div class="st">情緒調節</div><div class="ss">概念框架參照 CBCL 外化行為分量（5 題摘要版，供方向性參考）</div></div></div>
+  <div class="ref">0＝從不　1＝偶爾　2＝經常　3＝幾乎總是</div>
+  <div class="qr"><div class="ql">19. 輸了或計畫被改變時，崩潰超過 15 分鐘</div><div class="rr" id="r_e1"></div></div>
+  <div class="qr"><div class="ql">20. 被糾正或指出錯誤時，立即憤怒（摔物、攻擊、咒罵）</div><div class="rr" id="r_e2"></div></div>
+  <div class="qr"><div class="ql">21. 小挫折引發不成比例的大情緒</div><div class="rr" id="r_e3"></div></div>
+  <div class="qr"><div class="ql">22. 情緒爆發後難以在 10 分鐘內平復</div><div class="rr" id="r_e4"></div></div>
+  <div class="qr"><div class="ql">23. 情緒爆發頻率超過每週 3 次</div><div class="rr" id="r_e5"></div></div>
+</div>
+
+<div class="sec">
+  <div class="sh"><div class="sb" style="background:var(--purple-bg);color:var(--purple)">4</div><div><div class="st">睡眠品質（CSHQ 擴充摘要版，8 題）</div><div class="ss">來源：兒童睡眠習慣問卷（CSHQ）核心分量；完整評估請使用 CSHQ 45 題原版</div></div></div>
+  <div class="ref">0＝從不　1＝偶爾（每週 1 次）　2＝經常（每週 2–4 次）　3＝幾乎總是（每週 5 次以上）</div>
+  <div class="qr"><div class="ql">24. 上床後超過 30 分鐘仍無法入睡</div><div class="rr" id="r_s1"></div></div>
+  <div class="qr"><div class="ql">25. 睡眠中翻來覆去、踢被或多次醒來</div><div class="rr" id="r_s2"></div></div>
+  <div class="qr"><div class="ql">26. 早上極難叫醒，起床後情緒低落或爆躁</div><div class="rr" id="r_s3"></div></div>
+  <div class="qr"><div class="ql">27. 睡不夠的隔天，注意力或行為問題明顯加重</div><div class="rr" id="r_s4"></div></div>
+  <div class="qr"><div class="ql">28. 平日睡眠時數少於建議量（6–9 歲：10–11 小時；10–12 歲：9–10 小時）</div><div class="rr" id="r_s5"></div></div>
+  <div class="qr"><div class="ql">29. 入睡需特定條件（開燈、陪睡），缺少即無法入睡</div><div class="rr" id="r_s6"></div></div>
+  <div class="qr"><div class="ql">30. 睡眠中出現夢遊、夜驚或呼吸聲大／暫停</div><div class="rr" id="r_s7"></div></div>
+  <div class="qr"><div class="ql">31. 白天昏昏欲睡，或在搭車、等待時容易睡著</div><div class="rr" id="r_s8"></div></div>
+</div>
+
+<div class="sec">
+  <div class="sh"><div class="sb" style="background:var(--green-bg);color:var(--green)">5</div><div><div class="st">過敏與腸胃</div><div class="ss">參照 Rome IV 兒童功能性腸胃障礙概念；食物觀察為主觀回報，假陽性率高</div></div></div>
+  <div class="ref">是＝1 / 否＝0</div>
+  <div class="qr"><div class="ql">32. 有醫師確診過敏性疾病（鼻炎、氣喘、異位性皮膚炎）</div><div class="rr" id="r_g1"></div></div>
+  <div class="qr"><div class="ql">33. 長期便秘（超過 3 天未排）或反覆腹瀉</div><div class="rr" id="r_g2"></div></div>
+  <div class="qr"><div class="ql">34. 觀察到吃特定食物後行為明顯變差（主觀觀察，需記錄確認）</div><div class="rr" id="r_g3"></div></div>
+  <div class="qr"><div class="ql">35. 嚴重挑食，拒絕多種食物質地或味道</div><div class="rr" id="r_g4"></div></div>
+  <div class="qr"><div class="ql">36. 過敏症狀嚴重時，行為問題同步加重</div><div class="rr" id="r_g5"></div></div>
+</div>
+
+<div class="sec">
+  <div class="sh"><div class="sb" style="background:var(--orange-bg);color:var(--orange)">6</div><div><div class="st">營養與生活風險</div><div class="ss">參照 Rucklidge & Kaplan (2014)；缺乏需血液檢查確認，此為方向性風險提示</div></div></div>
+  <div class="ref">是＝1 / 否＝0</div>
+  <div class="qr"><div class="ql">37. 幾乎不吃魚（少於每週 1 次）</div><div class="rr" id="r_n1"></div></div>
+  <div class="qr"><div class="ql">38. 蛋白質攝取明顯不足（偏食澱粉甜食，少肉蛋奶）</div><div class="rr" id="r_n2"></div></div>
+  <div class="qr"><div class="ql">39. 每天戶外日照不足 30 分鐘</div><div class="rr" id="r_n3"></div></div>
+  <div class="qr"><div class="ql">40. 長期疲倦感重（即使睡足仍提不起勁）</div><div class="rr" id="r_n4"></div></div>
+  <div class="qr"><div class="ql">41. 曾驗血顯示缺鐵（鐵蛋白低）或維生素 D 不足</div><div class="rr" id="r_n5"></div></div>
+</div>
+
+<div class="ar">
+  <button class="bm" onclick="resetAll()">↺ 重填</button>
+  <button class="bs" onclick="calc()">查看分析結果 →</button>
+</div>
+</div>
+
+<div class="res" id="rw">
+  <div class="rh">評估分析結果</div>
+  <div id="rc"></div>
+</div>
+</div>
+
+<div class="footer">
+  本問卷整合 DSM-5（APA, 2013）、SNAP-IV、CSHQ（Owens et al., 2000）、CBCL（Achenbach, 2001）設計<br>
+  供教育與臨床輔助篩選使用，不可取代兒童精神科或臨床心理師之正式評估
+</div>
+
+<script>
+const l4=['從不(0)','偶爾(1)','經常(2)','幾乎總是(3)'];
+const lYN=['是','否'];
+const q4ids=['r_a1','r_a2','r_a3','r_a4','r_a5','r_a6','r_a7','r_a8','r_a9',
+             'r_h1','r_h2','r_h3','r_h4','r_h5','r_h6','r_h7','r_h8','r_h9',
+             'r_e1','r_e2','r_e3','r_e4','r_e5',
+             'r_s1','r_s2','r_s3','r_s4','r_s5','r_s6','r_s7','r_s8',
+             'r_ax1','r_ax2','r_ax3','r_asd1','r_asd2','r_asd3','r_ld1','r_ld2','r_ld3'];
+const qYNids=['r_g1','r_g2','r_g3','r_g4','r_g5','r_n1','r_n2','r_n3','r_n4','r_n5'];
+const metaG=['age','rep','dur','cross','onset','imp'];
+const allG=[...q4ids,...qYNids,...metaG];
+
+function build(){
+  q4ids.forEach(id=>{
+    const el=document.getElementById(id);if(!el)return;
+    l4.forEach((t,i)=>{
+      const b=document.createElement('button');b.className='rb';b.textContent=t;
+      b.dataset.g=id;b.dataset.v=String(i);
+      b.onclick=()=>{el.querySelectorAll('.rb').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');upP();};
+      el.appendChild(b);
+    });
+  });
+  qYNids.forEach(id=>{
+    const el=document.getElementById(id);if(!el)return;
+    lYN.forEach((t,i)=>{
+      const b=document.createElement('button');b.className='rb rb-yn';b.textContent=t;
+      b.dataset.g=id;b.dataset.v=i===0?'1':'0';
+      b.onclick=()=>{el.querySelectorAll('.rb').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');upP();};
+      el.appendChild(b);
+    });
+  });
+  metaG.forEach(g=>{
+    document.querySelectorAll('[data-g="'+g+'"]').forEach(b=>{
+      b.onclick=()=>{document.querySelectorAll('[data-g="'+g+'"]').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');upP();};
+    });
+  });
+}
+
+function gv(g){const el=document.querySelector('[data-g="'+g+'"].sel');return el?el.dataset.v:null;}
+function gn(g){const v=gv(g);return v!==null?parseFloat(v):null;}
+function upP(){
+  const n=allG.filter(g=>document.querySelector('[data-g="'+g+'"].sel')).length;
+  const p=Math.round(n/allG.length*100);
+  document.getElementById('prog').style.width=p+'%';
+  document.getElementById('pg-pct').textContent=p+'%';
+}
+function gsum(ids){
+  let s=0;ids.forEach(id=>{const v=gn(id);if(v!==null)s+=v;});
+  return{sum:s,max:ids.length*(qYNids.includes(ids[0])?1:3)};
+}
+function gcnt(ids,t){return ids.filter(id=>{const v=gn(id);return v!==null&&v>=t;}).length;}
+function pct(s,m){return Math.round(s/m*100);}
+
+function calc(){
+  const aI=['r_a1','r_a2','r_a3','r_a4','r_a5','r_a6','r_a7','r_a8','r_a9'];
+  const hI=['r_h1','r_h2','r_h3','r_h4','r_h5','r_h6','r_h7','r_h8','r_h9'];
+  const eI=['r_e1','r_e2','r_e3','r_e4','r_e5'];
+  const sI=['r_s1','r_s2','r_s3','r_s4','r_s5','r_s6','r_s7','r_s8'];
+  const gI=['r_g1','r_g2','r_g3','r_g4','r_g5'];
+  const nI=['r_n1','r_n2','r_n3','r_n4','r_n5'];
+  const axI=['r_ax1','r_ax2','r_ax3'],asdI=['r_asd1','r_asd2','r_asd3'],ldI=['r_ld1','r_ld2','r_ld3'];
+  const as=gsum(aI),hs=gsum(hI),es=gsum(eI),ss=gsum(sI),gs=gsum(gI),ns=gsum(nI);
+  const axs=gsum(axI),asds=gsum(asdI),lds=gsum(ldI);
+  const ap=pct(as.sum,as.max),hp=pct(hs.sum,hs.max),ep=pct(es.sum,es.max);
+  const sp=pct(ss.sum,ss.max),gp=pct(gs.sum,gs.max),np=pct(ns.sum,ns.max);
+  const axp=pct(axs.sum,axs.max),asdp=pct(asds.sum,asds.max),ldp=pct(lds.sum,lds.max);
+  const aSx=gcnt(aI,2),hSx=gcnt(hI,2);
+  const ageV=gv('age'),thr=ageV==='17p'?5:6;
+  const dur=gv('dur')==='1',cross=gv('cross')==='1';
+  const onset=gv('onset'),imp=gv('imp'),rep=gv('rep');
+  const onsetOk=onset==='early'||onset==='mid',onsetLate=onset==='late';
+  const impOk=imp==='yes'||imp==='partial',impNo=imp==='no';
+  let dsmType='—',dsmColor='#888',caveats=[];
+  if(!dur){dsmType='觀察時間不足，需達 6 個月再判讀';dsmColor='#854F0B';}
+  else if(!cross){dsmType='跨場域資料不足，DSM-5 需確認 2 個以上場域';dsmColor='#854F0B';}
+  else if(onsetLate){dsmType='⚠ 發病年齡在 12 歲後，不符合 DSM-5 發病準則';dsmColor='#A32D2D';caveats.push('DSM-5 要求症狀在 12 歲前已存在。若確為 12 歲後才開始，請考慮其他診斷。');}
+  else if(impNo){dsmType='症狀未造成功能損害，不符合 DSM-5 損害準則';dsmColor='#854F0B';caveats.push('DSM-5 要求症狀必須明顯干擾學業、社交或日常功能。');}
+  else{
+    if(aSx>=thr&&hSx>=thr){dsmType='混合型（ADHD-C）';dsmColor='#1A6BBF';}
+    else if(aSx>=thr){dsmType='不專注主導型（ADHD-PI）';dsmColor='#157A52';}
+    else if(hSx>=thr){dsmType='過動衝動主導型（ADHD-PH）';dsmColor='#B03020';}
+    else if(aSx>=thr-2||hSx>=thr-2){dsmType='閾下症狀，建議進一步評估';dsmColor='#854F0B';}
+    else{dsmType='症狀未達 DSM-5 篩選門檻';dsmColor='#6B6860';}
+    if(onset==='unknown')caveats.push('發病年齡不確定，建議詳細詢問幼兒期發展史。');
+  }
+  if(rep==='parent')caveats.push('目前僅家長端資料，建議補充老師端評分以提高準確度。');
+  if(rep==='teacher')caveats.push('目前僅老師端資料，建議補充家長端評分以提高準確度。');
+  const diffFlags=[];
+  if(axp>=55)diffFlags.push({t:'焦慮症指標偏高（'+axp+'%）',b:'注意力困難與情緒爆發可能部分源自焦慮。焦慮症可與 ADHD 共病，但也可能是主要診斷。建議評估廣泛性焦慮或分離焦慮，考慮轉介兒童心智科鑑別。'});
+  if(asdp>=55)diffFlags.push({t:'自閉症譜系（ASD）指標偏高（'+asdp+'%）',b:'固著行為、感覺敏感、社交困難是 ASD 核心特徵，亦可與 ADHD 共病（共病率約 50%）。情緒爆發可能源自感覺超載或慣例被打亂，建議轉介兒童心智科以 ADOS-2 評估。'});
+  if(ldp>=55)diffFlags.push({t:'學習障礙指標偏高（'+ldp+'%）',b:'特定學科困難可造成作業迴避與挫折爆發，行為上與 ADHD 相似但機制不同。建議進行標準化學習評估（WISC-V）。'});
+  const cats=[
+    {k:'inatt',n:'注意力渙散型',p:ap,c:'#1D9E75',bg:'#E4F5ED',t:55,desc:'DSM-5 不專注症狀數：'+aSx+'/9（門檻 ≥'+thr+'）。核心：作業拖延、漏看題目、指令記不住、恍神。',lim:'SNAP-IV 敏感度 76–82%、特異度約 80%；高分建議轉介，不等同診斷。'},
+    {k:'emot',n:'情緒爆衝型',p:ep,c:'#D85A30',bg:'#FBECEA',t:55,desc:'情緒調節困難在 ADHD 族群盛行率約 50–70%（Shaw et al., 2014）。',lim:'本區為 5 題摘要版，無法替代完整 CBCL-DP（需三分量加總）。若 B 區焦慮或 ASD 指標亦高，情緒問題來源需優先鑑別。'},
+    {k:'sleep',n:'睡眠失衡型',p:sp,c:'#5040AA',bg:'#EEF0FB',t:45,desc:'ADHD 兒童睡眠問題盛行率達 55–70%（Cortese et al., 2006）。',lim:'CSHQ 完整版（45 題）敏感度 0.80；本區 8 題為摘要版，效能較低，高分建議轉介睡眠專科。'},
+    {k:'gut',n:'過敏腸胃型',p:gp,c:'#3B6D11',bg:'#EAF3DE',t:60,desc:'鼻過敏、異膚、腸胃不適為核心風險因素。',lim:'食物觀察為主觀回報，假陽性率高；需食物日記或醫師指導的排除飲食試驗確認。'},
+    {k:'nutri',n:'缺乏風險型',p:np,c:'#BA7517',bg:'#FEF0E0',t:60,desc:'Omega-3、鐵蛋白、維生素 D 不足與 ADHD 症狀有相關性（效果量 ES 約 0.2–0.3）。',lim:'缺乏需血液檢查確認（鐵蛋白建議 >30 μg/L），不建議自行補充高劑量。'},
+    {k:'hyper',n:'過動衝動型',p:hp,c:'#1A6BBF',bg:'#EBF3FB',t:55,desc:'DSM-5 過動衝動症狀數：'+hSx+'/9（門檻 ≥'+thr+'）。已涵蓋 DSM-5 全部 9 項準則。',lim:'部分過動症狀（跑跳攀爬）在 12 歲後可能轉為內在坐立難安感，需結合發展階段判讀。'}
+  ].sort((a,b)=>b.p-a.p);
+  const flags=cats.filter(c=>c.p>=c.t);
+  let html='';
+  html+=`<div class="dsm"><div style="font-size:14px;font-weight:700;margin-bottom:.75rem">DSM-5 ADHD 亞型篩選</div>
+    <div class="dsmr"><span class="dl">篩選結論</span><span class="dv" style="color:${dsmColor}">${dsmType}</span></div>
+    <div class="dsmr"><span class="dl">不專注症狀數（評分≥2）</span><span class="dv">${aSx}/9　門檻≥${thr}</span></div>
+    <div class="dsmr"><span class="dl">過動衝動症狀數（評分≥2）</span><span class="dv">${hSx}/9　門檻≥${thr}</span></div>
+    <div class="dsmr"><span class="dl">觀察時間 ≥ 6 個月</span><span class="dv">${dur?'✓ 是':'✗ 未達'}</span></div>
+    <div class="dsmr"><span class="dl">跨場域確認</span><span class="dv">${cross?'✓ 確認':'⚠ 未確認'}</span></div>
+    <div class="dsmr"><span class="dl">發病年齡（12 歲前）</span><span class="dv">${onsetLate?'✗ 不符合':onset==='unknown'?'⚠ 不確定':onset?'✓ 符合':'—'}</span></div>
+    <div class="dsmr"><span class="dl">功能損害確認</span><span class="dv">${impNo?'✗ 未確認':impOk?'✓ 確認':'⚠ 不確定'}</span></div>
+    <div class="dsmr"><span class="dl">症狀門檻依據</span><span class="dv">${ageV==='17p'?'≥5 項（17 歲以上）':'≥6 項（16 歲以下）'}</span></div>
+    ${caveats.map(c=>`<div class="caveat">${c}</div>`).join('')}
+    <div class="nb">⚠ 此為觀察性篩選，敏感度 76–82%、特異度 ~80%，存在假陽性。最終診斷需由兒童精神科醫師完成完整臨床評估。</div>
+  </div>`;
+  if(diffFlags.length>0){
+    html+=`<div style="font-size:13px;font-weight:700;color:var(--danger);margin:.25rem 0 .5rem">⚑ 鑑別診斷警示（請優先釐清）</div>`;
+    diffFlags.forEach(f=>{html+=`<div class="diff"><div class="difft">${f.t}</div><div class="diffb">${f.b}</div></div>`;});
+  }
+  html+=`<div style="font-size:13px;font-weight:700;color:var(--text2);margin:.5rem 0 .65rem">五大功能向度分析</div>`;
+  cats.forEach((c,i)=>{
+    const hi=c.p>=c.t,hasDiff=diffFlags.length>0&&['emot','inatt','hyper'].includes(c.k);
+    html+=`<div class="rc ${i===0?'hl':''}">
+      <div class="rt"><div class="rn">${i===0?'▲ ':''}${c.n}</div><span class="rpi" style="background:${c.bg};color:${c.c}">${c.p}%</span></div>
+      <div class="bb"><div class="bf" style="width:${c.p}%;background:${c.c}"></div></div>
+      <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text3);margin-bottom:.4rem"><span>低</span><span>門檻 ${c.t}%</span><span>高</span></div>
+      <div style="margin-bottom:.4rem">${hi?'<span class="tga">建議進一步評估</span>':'<span class="tgb">未達門檻</span>'}${hasDiff?'<span class="tgw">⚑ 鑑別但書</span>':''}</div>
+      <div class="rd">${c.desc}</div><div class="lim">量表限制：${c.lim}</div>
+    </div>`;
+  });
+  if(flags.length>0){
+    html+=`<div class="dsm" style="border-color:var(--blue)">
+      <div style="font-size:13px;font-weight:700;margin-bottom:.5rem">建議優先介入方向</div>
+      <div style="font-size:13px;margin:.35rem 0">${flags.map(c=>'「'+c.n+'」').join('＋')}</div>
+      <div style="font-size:12px;color:var(--text2);line-height:1.65">以上向度達到建議門檻，可作為介入設計的優先方向。門檻為方向性指標，需結合臨床觀察綜合判斷。</div>
+      ${diffFlags.length>0?'<div style="font-size:12px;color:var(--danger);margin-top:.5rem">⚑ 出現鑑別診斷警示，建議在確認 ADHD 前先排除或評估共病。</div>':''}
+    </div>`;
+  }
+  html+=`<div class="disc">來源：DSM-5（APA, 2013）、SNAP-IV（Swanson et al.）、CSHQ（Owens et al., 2000）、CBCL（Achenbach, 2001）<br><strong>本工具不可取代兒童精神科、兒童心智科或臨床心理師之正式評估。</strong></div>`;
+  html+=`<div style="margin-top:1rem"><button class="bm" onclick="showForm()" style="width:100%;padding:12px">← 返回修改</button></div>`;
+  document.getElementById('rc').innerHTML=html;
+  document.getElementById('fw').style.display='none';
+  document.getElementById('rw').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+  document.getElementById('prog').style.width='100%';
+  document.getElementById('pg-pct').textContent='100%';
+}
+function showForm(){document.getElementById('fw').style.display='block';document.getElementById('rw').style.display='none';window.scrollTo({top:0,behavior:'smooth'});upP();}
+function resetAll(){document.querySelectorAll('.rb.sel').forEach(b=>b.classList.remove('sel'));upP();}
+build();
+</script>
+</body>
+</html>
